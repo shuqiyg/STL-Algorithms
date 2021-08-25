@@ -1,0 +1,19 @@
+After finishing workshop7, I’ve learned how to use the file streaming class(std::ifstream) to get data from a file and input into a sequential container(std::vector). Also, with the help of the Standard Template Library, I’m able to apply functions from <functional>, <algorithm>, and <numeric> to manipulate data inside a container. All STL functions that have been used in this workshop are listed as followed.
+
+std::sort(songs.begin(), songs.end(), [=](Song& song1, Song& song2) {….}): we sort the songs using the compare logic implemented inside the lambda function based on the string input entered by the user in the upper level. In this way, we don’t have to overload the comparing operator for each name of the field.
+
+std::any_of(songs.begin(), songs.end(), [&](Song song {…}): we try to find if the provided artist name is within the range of songs, it returns true if it’s found, no loop needed, many lines of code have been saved.
+
+std::count_if(songs.begin(), songs.end(), [&](Song song) {….}): we count the occurrences of the songs that fit into the artist name criteria. 
+
+std::copy_if(songs.begin(), songs.end(), song_list.begin(), [&](Song song) {…}): copying element from one container to another if it satisfies the logic implemented in the lambda function {…}.
+
+std::for_each(songs.begin(), songs.end(), [&](Song song) {…}): we use this function to loop through every element and display them without coding our own loops.
+
+std::transform(songs.begin(), songs.end(), playtime_list.begin(), [](Song song) {…}): extracting the length attribute of every Song object within the songs vector and store  them into playtime_list without looping.
+
+std::accumulate(playtime_list.begin(), playtime_list.end(), (int)0) : accumulate the playtime value in palytime_list to a size_t and return the result. 
+
+STL make our code more reusable, extensible, solid and robust, it simplifies the lots of data structure for better efficiency. It also brings us expressiveness by raising the level of abstraction of code, all the functions within STL show what they do rather than how they are implemented. STL algorithms take care of most edge-cases that we might miss out, they are optimized for use with STL containers and that’s why they are faster and clearer than any loop we write ourselves. They have been tested and refined over the years by so many experienced programmers. 
+
+To catch an invalid string input without alerting the compiler in the sort collection function, we have to safeguard the string before entering it into the parameter of std::sort() function. We could implement a logic to verify the string, filter out any invalid input and throw an error to be caught, only allowing certain designated strings to be pass through the std::sort() function.
